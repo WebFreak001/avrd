@@ -1,0 +1,7 @@
+name "avrd"
+description "D port of avr-libc headers and most avr-gcc processor defines"
+toolchainRequirements dmd="no" gdc="no" ldc="*"
+targetType "sourceLibrary"
+buildOptions "betterC"
+buildRequirements "allowWarnings"
+

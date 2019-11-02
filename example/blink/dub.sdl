@@ -1,0 +1,8 @@
+name "blinking"
+dependency "avrd" path="../.."
+subConfiguration "avrd" "atmega1284p"
+buildRequirements "allowWarnings"
+buildOptions "betterC"
+targetPath "."
+targetType "unlinkedObjects"
+dflags "-Oz" "--fvisibility=hidden" platform="ldc"
