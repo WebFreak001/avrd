@@ -1,4 +1,4 @@
-module avr.device.io_m1284p;
+module avr.device.io_m328p;
 
 /* Copyright (c) 2007 Atmel Corporation
    All rights reserved.
@@ -31,45 +31,15 @@ module avr.device.io_m1284p;
   POSSIBILITY OF SUCH DAMAGE. 
 */
 
-/* $Id: iom1284p.h 2460 2014-12-03 05:39:25Z pitchumani $ */
+/* $Id: iom328p.h 2460 2014-12-03 05:39:25Z pitchumani $ */
 
-/* avr/iom1284p.h - definitions for ATmega1284P. */
+/* avr/iom328p.h - definitions for ATmega328P. */
 
-/* Manually translated to D */
+/* This file should only be included from <avr/io.h>, never directly. */
 
 import avr.sfr_defs;
 
 /* Registers and associated bit numbers */
-
-enum PINA = _SFR_IO8!0x00;
-enum PINA0 = 0;
-enum PINA1 = 1;
-enum PINA2 = 2;
-enum PINA3 = 3;
-enum PINA4 = 4;
-enum PINA5 = 5;
-enum PINA6 = 6;
-enum PINA7 = 7;
-
-enum DDRA = _SFR_IO8!0x01;
-enum DDA0 = 0;
-enum DDA1 = 1;
-enum DDA2 = 2;
-enum DDA3 = 3;
-enum DDA4 = 4;
-enum DDA5 = 5;
-enum DDA6 = 6;
-enum DDA7 = 7;
-
-enum PORTA = _SFR_IO8!0x02;
-enum PORTA0 = 0;
-enum PORTA1 = 1;
-enum PORTA2 = 2;
-enum PORTA3 = 3;
-enum PORTA4 = 4;
-enum PORTA5 = 5;
-enum PORTA6 = 6;
-enum PORTA7 = 7;
 
 enum PINB = _SFR_IO8!0x03;
 enum PINB0 = 0;
@@ -109,7 +79,6 @@ enum PINC3 = 3;
 enum PINC4 = 4;
 enum PINC5 = 5;
 enum PINC6 = 6;
-enum PINC7 = 7;
 
 enum DDRC = _SFR_IO8!0x07;
 enum DDC0 = 0;
@@ -119,7 +88,6 @@ enum DDC3 = 3;
 enum DDC4 = 4;
 enum DDC5 = 5;
 enum DDC6 = 6;
-enum DDC7 = 7;
 
 enum PORTC = _SFR_IO8!0x08;
 enum PORTC0 = 0;
@@ -129,7 +97,6 @@ enum PORTC3 = 3;
 enum PORTC4 = 4;
 enum PORTC5 = 5;
 enum PORTC6 = 6;
-enum PORTC7 = 7;
 
 enum PIND = _SFR_IO8!0x09;
 enum PIND0 = 0;
@@ -177,27 +144,18 @@ enum TOV2 = 0;
 enum OCF2A = 1;
 enum OCF2B = 2;
 
-enum TIFR3 = _SFR_IO8!0x18;
-enum TOV3 = 0;
-enum OCF3A = 1;
-enum OCF3B = 2;
-enum ICF3 = 5;
-
 enum PCIFR = _SFR_IO8!0x1B;
 enum PCIF0 = 0;
 enum PCIF1 = 1;
 enum PCIF2 = 2;
-enum PCIF3 = 3;
 
 enum EIFR = _SFR_IO8!0x1C;
 enum INTF0 = 0;
 enum INTF1 = 1;
-enum INTF2 = 2;
 
 enum EIMSK = _SFR_IO8!0x1D;
 enum INT0 = 0;
 enum INT1 = 1;
-enum INT2 = 2;
 
 enum GPIOR0 = _SFR_IO8!0x1E;
 enum GPIOR00 = 0;
@@ -242,8 +200,8 @@ enum EEAR7 = 7;
 enum EEARH = _SFR_IO8!0x22;
 enum EEAR8 = 0;
 enum EEAR9 = 1;
-enum EEAR10 = 2;
-enum EEAR11 = 3;
+
+enum _EEPROM_REG_LOCATIONS_ = 0x1F2021;
 
 enum GTCCR = _SFR_IO8!0x23;
 enum PSRSYNC = 0;
@@ -351,16 +309,6 @@ enum ACO = 5;
 enum ACBG = 6;
 enum ACD = 7;
 
-enum OCDR = _SFR_IO8!0x31;
-enum OCDR0 = 0;
-enum OCDR1 = 1;
-enum OCDR2 = 2;
-enum OCDR3 = 3;
-enum OCDR4 = 4;
-enum OCDR5 = 5;
-enum OCDR6 = 6;
-enum OCDR7 = 7;
-
 enum SMCR = _SFR_IO8!0x33;
 enum SE = 0;
 enum SM0 = 1;
@@ -372,7 +320,6 @@ enum PORF = 0;
 enum EXTRF = 1;
 enum BORF = 2;
 enum WDRF = 3;
-enum JTRF = 4;
 
 enum MCUCR = _SFR_IO8!0x35;
 enum IVCE = 0;
@@ -380,7 +327,6 @@ enum IVSEL = 1;
 enum PUD = 4;
 enum BODSE = 5;
 enum BODS = 6;
-enum JTD = 7;
 
 enum SPMCSR = _SFR_IO8!0x37;
 enum SPMEN = 0;
@@ -391,9 +337,6 @@ enum RWWSRE = 4;
 enum SIGRD = 5;
 enum RWWSB = 6;
 enum SPMIE = 7;
-
-enum RAMPZ = _SFR_IO8!0x3B;
-enum RAMPZ0 = 0;
 
 enum WDTCSR = _SFR_MEM8!0x60;
 enum WDP0 = 0;
@@ -412,32 +355,24 @@ enum CLKPS2 = 2;
 enum CLKPS3 = 3;
 enum CLKPCE = 7;
 
-enum PRR0 = _SFR_MEM8!0x64;
+enum PRR = _SFR_MEM8!0x64;
 enum PRADC = 0;
 enum PRUSART0 = 1;
 enum PRSPI = 2;
 enum PRTIM1 = 3;
-enum PRUSART1 = 4;
 enum PRTIM0 = 5;
 enum PRTIM2 = 6;
 enum PRTWI = 7;
 
-enum __AVR_HAVE_PRR0 = ((1 << PRADC) | (1 << PRSPI) | (1 << PRTIM1) | (
-      1 << PRUSART0) | (1 << PRUSART1) | (1 << PRTIM0) | (1 << PRTIM2) | (1 << PRTWI));
-enum __AVR_HAVE_PRR0_PRADC = true;
-enum __AVR_HAVE_PRR0_PRSPI = true;
-enum __AVR_HAVE_PRR0_PRTIM1 = true;
-enum __AVR_HAVE_PRR0_PRUSART0 = true;
-enum __AVR_HAVE_PRR0_PRUSART1 = true;
-enum __AVR_HAVE_PRR0_PRTIM0 = true;
-enum __AVR_HAVE_PRR0_PRTIM2 = true;
-enum __AVR_HAVE_PRR0_PRTWI = true;
-
-enum PRR1 = _SFR_MEM8!0x65;
-enum PRTIM3 = 0;
-
-enum __AVR_HAVE_PRR1 = (1 << PRTIM3);
-enum __AVR_HAVE_PRR1_PRTIM3 = true;
+enum __AVR_HAVE_PRR = ((1 << PRADC) | (1 << PRUSART0) | (1 << PRSPI) | (
+      1 << PRTIM1) | (1 << PRTIM0) | (1 << PRTIM2) | (1 << PRTWI));
+enum __AVR_HAVE_PRR_PRADC = true;
+enum __AVR_HAVE_PRR_PRUSART0 = true;
+enum __AVR_HAVE_PRR_PRSPI = true;
+enum __AVR_HAVE_PRR_PRTIM1 = true;
+enum __AVR_HAVE_PRR_PRTIM0 = true;
+enum __AVR_HAVE_PRR_PRTIM2 = true;
+enum __AVR_HAVE_PRR_PRTWI = true;
 
 enum OSCCAL = _SFR_MEM8!0x66;
 enum CAL0 = 0;
@@ -453,15 +388,12 @@ enum PCICR = _SFR_MEM8!0x68;
 enum PCIE0 = 0;
 enum PCIE1 = 1;
 enum PCIE2 = 2;
-enum PCIE3 = 3;
 
 enum EICRA = _SFR_MEM8!0x69;
 enum ISC00 = 0;
 enum ISC01 = 1;
 enum ISC10 = 2;
 enum ISC11 = 3;
-enum ISC20 = 4;
-enum ISC21 = 5;
 
 enum PCMSK0 = _SFR_MEM8!0x6B;
 enum PCINT0 = 0;
@@ -481,7 +413,6 @@ enum PCINT11 = 3;
 enum PCINT12 = 4;
 enum PCINT13 = 5;
 enum PCINT14 = 6;
-enum PCINT15 = 7;
 
 enum PCMSK2 = _SFR_MEM8!0x6D;
 enum PCINT16 = 0;
@@ -508,22 +439,6 @@ enum TIMSK2 = _SFR_MEM8!0x70;
 enum TOIE2 = 0;
 enum OCIE2A = 1;
 enum OCIE2B = 2;
-
-enum TIMSK3 = _SFR_MEM8!0x71;
-enum TOIE3 = 0;
-enum OCIE3A = 1;
-enum OCIE3B = 2;
-enum ICIE3 = 5;
-
-enum PCMSK3 = _SFR_MEM8!0x73;
-enum PCINT24 = 0;
-enum PCINT25 = 1;
-enum PCINT26 = 2;
-enum PCINT27 = 3;
-enum PCINT28 = 4;
-enum PCINT29 = 5;
-enum PCINT30 = 6;
-enum PCINT31 = 7;
 
 version (__ASSEMBLER__)
 {
@@ -575,7 +490,6 @@ enum MUX0 = 0;
 enum MUX1 = 1;
 enum MUX2 = 2;
 enum MUX3 = 3;
-enum MUX4 = 4;
 enum ADLAR = 5;
 enum REFS0 = 6;
 enum REFS1 = 7;
@@ -587,8 +501,6 @@ enum ADC2D = 2;
 enum ADC3D = 3;
 enum ADC4D = 4;
 enum ADC5D = 5;
-enum ADC6D = 6;
-enum ADC7D = 7;
 
 enum DIDR1 = _SFR_MEM8!0x7F;
 enum AIN0D = 0;
@@ -703,115 +615,6 @@ enum OCR1BH5 = 5;
 enum OCR1BH6 = 6;
 enum OCR1BH7 = 7;
 
-enum TCCR3A = _SFR_MEM8!0x90;
-enum WGM30 = 0;
-enum WGM31 = 1;
-enum COM3B0 = 4;
-enum COM3B1 = 5;
-enum COM3A0 = 6;
-enum COM3A1 = 7;
-
-enum TCCR3B = _SFR_MEM8!0x91;
-enum CS30 = 0;
-enum CS31 = 1;
-enum CS32 = 2;
-enum WGM32 = 3;
-enum WGM33 = 4;
-enum ICES3 = 6;
-enum ICNC3 = 7;
-
-enum TCCR3C = _SFR_MEM8!0x92;
-enum FOC3B = 6;
-enum FOC3A = 7;
-
-enum TCNT3 = _SFR_MEM16!0x94;
-
-enum TCNT3L = _SFR_MEM8!0x94;
-enum TCNT3L0 = 0;
-enum TCNT3L1 = 1;
-enum TCNT3L2 = 2;
-enum TCNT3L3 = 3;
-enum TCNT3L4 = 4;
-enum TCNT3L5 = 5;
-enum TCNT3L6 = 6;
-enum TCNT3L7 = 7;
-
-enum TCNT3H = _SFR_MEM8!0x95;
-enum TCNT3H0 = 0;
-enum TCNT3H1 = 1;
-enum TCNT3H2 = 2;
-enum TCNT3H3 = 3;
-enum TCNT3H4 = 4;
-enum TCNT3H5 = 5;
-enum TCNT3H6 = 6;
-enum TCNT3H7 = 7;
-
-enum ICR3 = _SFR_MEM16!0x96;
-
-enum ICR3L = _SFR_MEM8!0x96;
-enum ICR3L0 = 0;
-enum ICR3L1 = 1;
-enum ICR3L2 = 2;
-enum ICR3L3 = 3;
-enum ICR3L4 = 4;
-enum ICR3L5 = 5;
-enum ICR3L6 = 6;
-enum ICR3L7 = 7;
-
-enum ICR3H = _SFR_MEM8!0x97;
-enum ICR3H0 = 0;
-enum ICR3H1 = 1;
-enum ICR3H2 = 2;
-enum ICR3H3 = 3;
-enum ICR3H4 = 4;
-enum ICR3H5 = 5;
-enum ICR3H6 = 6;
-enum ICR3H7 = 7;
-
-enum OCR3A = _SFR_MEM16!0x98;
-
-enum OCR3AL = _SFR_MEM8!0x98;
-enum OCR3AL0 = 0;
-enum OCR3AL1 = 1;
-enum OCR3AL2 = 2;
-enum OCR3AL3 = 3;
-enum OCR3AL4 = 4;
-enum OCR3AL5 = 5;
-enum OCR3AL6 = 6;
-enum OCR3AL7 = 7;
-
-enum OCR3AH = _SFR_MEM8!0x99;
-enum OCR3AH0 = 0;
-enum OCR3AH1 = 1;
-enum OCR3AH2 = 2;
-enum OCR3AH3 = 3;
-enum OCR3AH4 = 4;
-enum OCR3AH5 = 5;
-enum OCR3AH6 = 6;
-enum OCR3AH7 = 7;
-
-enum OCR3B = _SFR_MEM16!0x9A;
-
-enum OCR3BL = _SFR_MEM8!0x9A;
-enum OCR3BL0 = 0;
-enum OCR3BL1 = 1;
-enum OCR3BL2 = 2;
-enum OCR3BL3 = 3;
-enum OCR3BL4 = 4;
-enum OCR3BL5 = 5;
-enum OCR3BL6 = 6;
-enum OCR3BL7 = 7;
-
-enum OCR3BH = _SFR_MEM8!0x9B;
-enum OCR3BH0 = 0;
-enum OCR3BH1 = 1;
-enum OCR3BH2 = 2;
-enum OCR3BH3 = 3;
-enum OCR3BH4 = 4;
-enum OCR3BH5 = 5;
-enum OCR3BH6 = 6;
-enum OCR3BH7 = 7;
-
 enum TCCR2A = _SFR_MEM8!0xB0;
 enum WGM20 = 0;
 enum WGM21 = 1;
@@ -916,13 +719,13 @@ enum TWEA = 6;
 enum TWINT = 7;
 
 enum TWAMR = _SFR_MEM8!0xBD;
-enum TWAM0 = 1;
-enum TWAM1 = 2;
-enum TWAM2 = 3;
-enum TWAM3 = 4;
-enum TWAM4 = 5;
-enum TWAM5 = 6;
-enum TWAM6 = 7;
+enum TWAM0 = 0;
+enum TWAM1 = 1;
+enum TWAM2 = 2;
+enum TWAM3 = 3;
+enum TWAM4 = 4;
+enum TWAM5 = 5;
+enum TWAM6 = 6;
 
 enum UCSR0A = _SFR_MEM8!0xC0;
 enum MPCM0 = 0;
@@ -947,7 +750,9 @@ enum RXCIE0 = 7;
 enum UCSR0C = _SFR_MEM8!0xC2;
 enum UCPOL0 = 0;
 enum UCSZ00 = 1;
+enum UCPHA0 = 1;
 enum UCSZ01 = 2;
+enum UDORD0 = 2;
 enum USBS0 = 3;
 enum UPM00 = 4;
 enum UPM01 = 5;
@@ -982,112 +787,45 @@ enum UDR0_5 = 5;
 enum UDR0_6 = 6;
 enum UDR0_7 = 7;
 
-enum UCSR1A = _SFR_MEM8!0xC8;
-enum MPCM1 = 0;
-enum U2X1 = 1;
-enum UPE1 = 2;
-enum DOR1 = 3;
-enum FE1 = 4;
-enum UDRE1 = 5;
-enum TXC1 = 6;
-enum RXC1 = 7;
-
-enum UCSR1B = _SFR_MEM8!0xC9;
-enum TXB81 = 0;
-enum RXB81 = 1;
-enum UCSZ12 = 2;
-enum TXEN1 = 3;
-enum RXEN1 = 4;
-enum UDRIE1 = 5;
-enum TXCIE1 = 6;
-enum RXCIE1 = 7;
-
-enum UCSR1C = _SFR_MEM8!0xCA;
-enum UCPOL1 = 0;
-enum UCSZ10 = 1;
-enum UCSZ11 = 2;
-enum USBS1 = 3;
-enum UPM10 = 4;
-enum UPM11 = 5;
-enum UMSEL10 = 6;
-enum UMSEL11 = 7;
-
-enum UBRR1 = _SFR_MEM16!0xCC;
-
-enum UBRR1L = _SFR_MEM8!0xCC;
-enum UBRR1_0 = 0;
-enum UBRR1_1 = 1;
-enum UBRR1_2 = 2;
-enum UBRR1_3 = 3;
-enum UBRR1_4 = 4;
-enum UBRR1_5 = 5;
-enum UBRR1_6 = 6;
-enum UBRR1_7 = 7;
-
-enum UBRR1H = _SFR_MEM8!0xCD;
-enum UBRR1_8 = 0;
-enum UBRR1_9 = 1;
-enum UBRR1_10 = 2;
-enum UBRR1_11 = 3;
-
-enum UDR1 = _SFR_MEM8!0xCE;
-enum UDR1_0 = 0;
-enum UDR1_1 = 1;
-enum UDR1_2 = 2;
-enum UDR1_3 = 3;
-enum UDR1_4 = 4;
-enum UDR1_5 = 5;
-enum UDR1_6 = 6;
-enum UDR1_7 = 7;
-
 /* Interrupt Vectors */
 /* Interrupt Vector 0 is the reset vector. */
 
 enum INT0_vect = 1; /// External Interrupt Request 0
 enum INT1_vect = 2; /// External Interrupt Request 1
-enum INT2_vect = 3; /// External Interrupt Request 2
-enum PCINT0_vect = 4; /// Pin Change Interrupt Request 0
-enum PCINT1_vect = 5; /// Pin Change Interrupt Request 1
-enum PCINT2_vect = 6; /// Pin Change Interrupt Request 2
-enum PCINT3_vect = 7; /// Pin Change Interrupt Request 3
-enum WDT_vect = 8; /// Watchdog Time-out Interrupt
-enum TIMER2_COMPA_vect = 9; /// Timer/Counter2 Compare Match A
-enum TIMER2_COMPB_vect = 10; /// Timer/Counter2 Compare Match B
-enum TIMER2_OVF_vect = 11; /// Timer/Counter2 Overflow
-enum TIMER1_CAPT_vect = 12; /// Timer/Counter1 Capture Event
-enum TIMER1_COMPA_vect = 13; /// Timer/Counter1 Compare Match A
-enum TIMER1_COMPB_vect = 14; /// Timer/Counter1 Compare Match B
-enum TIMER1_OVF_vect = 15; /// Timer/Counter1 Overflow
-enum TIMER0_COMPA_vect = 16; /// Timer/Counter0 Compare Match A
-enum TIMER0_COMPB_vect = 17; /// Timer/Counter0 Compare Match B
-enum TIMER0_OVF_vect = 18; /// Timer/Counter0 Overflow
-enum SPI_STC_vect = 19; /// SPI Serial Transfer Complete
-enum USART0_RX_vect = 20; /// USART0, Rx Complete
-enum USART0_UDRE_vect = 21; /// USART0 Data register Empty
-enum USART0_TX_vect = 22; /// USART0, Tx Complete
+enum PCINT0_vect = 3; /// Pin Change Interrupt Request 0
+enum PCINT1_vect = 4; /// Pin Change Interrupt Request 0
+enum PCINT2_vect = 5; /// Pin Change Interrupt Request 1
+enum WDT_vect = 6; /// Watchdog Time-out Interrupt
+enum TIMER2_COMPA_vect = 7; /// Timer/Counter2 Compare Match A
+enum TIMER2_COMPB_vect = 8; /// Timer/Counter2 Compare Match A
+enum TIMER2_OVF_vect = 9; /// Timer/Counter2 Overflow
+enum TIMER1_CAPT_vect = 10; /// Timer/Counter1 Capture Event
+enum TIMER1_COMPA_vect = 11; /// Timer/Counter1 Compare Match A
+enum TIMER1_COMPB_vect = 12; /// Timer/Counter1 Compare Match B 
+enum TIMER1_OVF_vect = 13; /// Timer/Counter1 Overflow
+enum TIMER0_COMPA_vect = 14; /// TimerCounter0 Compare Match A
+enum TIMER0_COMPB_vect = 15; /// TimerCounter0 Compare Match B
+enum TIMER0_OVF_vect = 16; /// Timer/Couner0 Overflow
+enum SPI_STC_vect = 17; /// SPI Serial Transfer Complete
+enum USART_RX_vect = 18; /// USART Rx Complete
+enum USART_UDRE_vect = 19; /// USART, Data Register Empty
+enum USART_TX_vect = 20; /// USART Tx Complete
+enum ADC_vect = 21; /// ADC Conversion Complete
+enum EE_READY_vect = 22; /// EEPROM Ready
 enum ANALOG_COMP_vect = 23; /// Analog Comparator
-enum ADC_vect = 24; /// ADC Conversion Complete
-enum EE_READY_vect = 25; /// EEPROM Ready
-enum TWI_vect = 26; /// 2-wire Serial Interface
-enum SPM_READY_vect = 27; /// Store Program Memory Read
-enum USART1_RX_vect = 28; /// USART1 RX complete
-enum USART1_UDRE_vect = 29; /// USART1 Data Register Empty
-enum USART1_TX_vect = 30; /// USART1 TX complete
-enum TIMER3_CAPT_vect = 31; /// Timer/Counter3 Capture Event
-enum TIMER3_COMPA_vect = 32; /// Timer/Counter3 Compare Match A
-enum TIMER3_COMPB_vect = 33; /// Timer/Counter3 Compare Match B
-enum TIMER3_OVF_vect = 34; /// Timer/Counter3 Overflow
-enum _VECTORS_SIZE = 35 * 4;
+enum TWI_vect = 24; /// Two-wire Serial Interface
+enum SPM_READY_vect = 25; /// Store Program Memory Read
+enum _VECTORS_SIZE = (26 * 4);
 
 /* Constants */
-enum SPM_PAGESIZE = 256;
-enum RAMSTART = 0x100;
-enum RAMEND = 0x40FF; /* Last On-Chip SRAM Location */
+enum SPM_PAGESIZE = 128;
+enum RAMSTART = (0x100);
+enum RAMEND = 0x8FF; /// Last On-Chip SRAM Location
 enum XRAMSIZE = 0;
 enum XRAMEND = RAMEND;
-enum E2END = 0xFFF;
-enum E2PAGESIZE = 8;
-enum FLASHEND = 0x1FFFF;
+enum E2END = 0x3FF;
+enum E2PAGESIZE = 4;
+enum FLASHEND = 0x7FFF;
 
 /* Fuses */
 enum FUSE_MEMORY_SIZE = 3;
@@ -1101,18 +839,18 @@ enum FUSE_SUT0 = cast(ubyte)~_BV!4; /// Select start-up time
 enum FUSE_SUT1 = cast(ubyte)~_BV!5; /// Select start-up time
 enum FUSE_CKOUT = cast(ubyte)~_BV!6; /// Clock output
 enum FUSE_CKDIV8 = cast(ubyte)~_BV!7; /// Divide clock by 8
-enum LFUSE_DEFAULT = (FUSE_CKSEL0 & FUSE_CKSEL2 & FUSE_CKSEL3 & FUSE_SUT0 & FUSE_SUT1 & FUSE_CKDIV8);
+enum LFUSE_DEFAULT = (FUSE_CKSEL0 & FUSE_CKSEL2 & FUSE_CKSEL3 & FUSE_SUT0 & FUSE_CKDIV8);
 
 /* High Fuse Byte */
-enum FUSE_BOOTRST = cast(ubyte)~_BV!0; /// Select Reset Vector
-enum FUSE_BOOTSZ0 = cast(ubyte)~_BV!1; /// Select Boot Size
-enum FUSE_BOOTSZ1 = cast(ubyte)~_BV!2; /// Select Boot Size
+enum FUSE_BOOTRST = cast(ubyte)~_BV!0;
+enum FUSE_BOOTSZ0 = cast(ubyte)~_BV!1;
+enum FUSE_BOOTSZ1 = cast(ubyte)~_BV!2;
 enum FUSE_EESAVE = cast(ubyte)~_BV!3; /// EEPROM memory is preserved through chip erase
-enum FUSE_WDTON = cast(ubyte)~_BV!4; /// Watchdog timer always on
+enum FUSE_WDTON = cast(ubyte)~_BV!4; /// Watchdog Timer Always On
 enum FUSE_SPIEN = cast(ubyte)~_BV!5; /// Enable Serial programming and Data Downloading
-enum FUSE_JTAGEN = cast(ubyte)~_BV!6; /// Enable JTAG
-enum FUSE_OCDEN = cast(ubyte)~_BV!7; /// Enable OCD
-enum HFUSE_DEFAULT = (FUSE_BOOTSZ0 & FUSE_SPIEN & FUSE_JTAGEN);
+enum FUSE_DWEN = cast(ubyte)~_BV!6; /// debugWIRE Enable
+enum FUSE_RSTDISBL = cast(ubyte)~_BV!7; /// External reset disable
+enum HFUSE_DEFAULT = (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_SPIEN);
 
 /* Extended Fuse Byte */
 enum FUSE_BODLEVEL0 = cast(ubyte)~_BV!0; /// Brown-out Detector trigger level
@@ -1127,8 +865,15 @@ enum __BOOT_LOCK_BITS_1_EXIST = true;
 
 /* Signature */
 enum SIGNATURE_0 = 0x1E;
-enum SIGNATURE_1 = 0x97;
-enum SIGNATURE_2 = 0x05;
+enum SIGNATURE_1 = 0x95;
+version (__AVR_ATmega328__)
+{
+  enum SIGNATURE_2 = 0x14;
+}
+else /* ATmega328P */
+{
+  enum SIGNATURE_2 = 0x0F;
+}
 
 enum SLEEP_MODE_IDLE = (0x00 << 1);
 enum SLEEP_MODE_ADC = (0x01 << 1);
