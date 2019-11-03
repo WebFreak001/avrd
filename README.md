@@ -8,6 +8,12 @@ Enables you to use D with -betterC on embedded devices.
 
 Not all device specific header files are ported yet. When trying to import avr.io for the default device names this will result in an error in avr.io for any unported device.
 
+Ported board headers:
+
+- ATmega1284P
+- ATmega168P
+- ATmega328P
+
 ## Project structure
 
 Most includes you would find in avr-libc (`#include <avr/io.h>` for example) have the same naming convention with this D package. So `import avr.io;` for your basic io header file.
