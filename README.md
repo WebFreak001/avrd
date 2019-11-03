@@ -1,7 +1,5 @@
 # avrd
 
-## Warning: due to optimization failure this is currently barely usable (executable file is blown up with unused functions)
-
 Ported defines of avr-gcc and headers of avr-libc.
 
 Enables you to use D with -betterC on embedded devices.

@@ -39,40 +39,38 @@ module avr.sfr_defs;
 public import avr.specs;
 
 import core.bitop;
+import ldc.attributes;
 
 /// Helper struct to automatically call volatileStore and volatileLoad on assignment/reading of pointers
-template VolatileRef(T, alias addr)
+struct VolatileRef(T, alias addr)
 {
-	struct VolatileRef
+	alias get this;
+
+pragma(inline, true) @section(".progmem.data.inlines_volatileref_" ~ addr.stringof):
+
+	// TODO: the following functions still make it into the resulting HEX file, even though they are unused if always inlined
+	// they should be removed from the hex file somehow, but they don't get stripped or removed by -Wl,--gc-sections
+
+	T* ptr()()
 	{
-		alias get this;
+		return cast(T*)(addr);
+	}
 
-	pragma(inline, true):
+	T get()()
+	{
+		return volatileLoad(ptr);
+	}
 
-		// TODO: the following functions still make it into the resulting HEX file, even though they are unused if always inlined
-		// they should be removed from the hex file somehow, but they don't get stripped or removed by -Wl,--gc-sections
+	void opAssign()(T value)
+	{
+		volatileStore(ptr, value);
+	}
 
-		static T* ptr()
-		{
-			return cast(T*)(addr);
-		}
-
-		static T get()
-		{
-			return volatileLoad(ptr);
-		}
-
-		static void opAssign(T value)
-		{
-			volatileStore(ptr, value);
-		}
-
-		static auto opOpAssign(string op)(T value)
-		{
-			T ret;
-			mixin("volatileStore(ptr, ret = cast(T)(volatileLoad(ptr) " ~ op ~ " value));");
-			return ret;
-		}
+	auto opOpAssign(string op)(T value)
+	{
+		T ret;
+		mixin("volatileStore(ptr, ret = cast(T)(volatileLoad(ptr) " ~ op ~ " value));");
+		return ret;
 	}
 }
 
