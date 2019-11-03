@@ -72,6 +72,12 @@ pragma(inline, true) @section(".progmem.data.inlines_volatileref_" ~ addr.string
 		mixin("volatileStore(ptr, ret = cast(T)(volatileLoad(ptr) " ~ op ~ " value));");
 		return ret;
 	}
+
+	auto opOpAssign(string op, U)(U value)
+		if (!is(U : T))
+	{
+		static assert(false, "Cannot assign " ~ U.stringof ~ " to a " ~ T.stringof ~ " VolatileRef (try casting?)");
+	}
 }
 
 enum _MMIO_BYTE(alias io_addr) = VolatileRef!(ubyte, cast(ubyte*) io_addr)();
