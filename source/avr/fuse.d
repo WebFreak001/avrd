@@ -191,22 +191,22 @@ static if (FUSE_MEMORY_SIZE > 0)
 		// default init all fuses to 1
 		static if (FUSE_MEMORY_SIZE > 3)
 		{
-			ubyte[FUSE_MEMORY_SIZE] bytes = 1;
+			ubyte[FUSE_MEMORY_SIZE] bytes = 0xFF;
 		}
 		else static if (FUSE_MEMORY_SIZE == 3)
 		{
-			ubyte low = 1;
-			ubyte high = 1;
-			ubyte extended = 1;
+			ubyte low = LFUSE_DEFAULT;
+			ubyte high = HFUSE_DEFAULT;
+			ubyte extended = EFUSE_DEFAULT;
 		}
 		else static if (FUSE_MEMORY_SIZE == 2)
 		{
-			ubyte low = 1;
-			ubyte high = 1;
+			ubyte low = LFUSE_DEFAULT;
+			ubyte high = HFUSE_DEFAULT;
 		}
 		else static if (FUSE_MEMORY_SIZE == 1)
 		{
-			ubyte low = 1;
+			ubyte low = LFUSE_DEFAULT;
 		}
 	}
 }

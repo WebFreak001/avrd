@@ -46,7 +46,7 @@ struct VolatileRef(T, alias addr)
 {
 	alias get this;
 
-pragma(inline, true) @section(".progmem.data.inlines_volatileref_" ~ addr.stringof):
+pragma(inline, true) @section(".progmem.data.inlines_volatileref_" ~ addr.stringof) :
 
 	// TODO: the following functions still make it into the resulting HEX file, even though they are unused if always inlined
 	// they should be removed from the hex file somehow, but they don't get stripped or removed by -Wl,--gc-sections

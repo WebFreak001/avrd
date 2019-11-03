@@ -633,7 +633,7 @@ void main(string[] args)
 						`	dflags "-mtriple=avr" "-mcpu=` ~ info.name ~ `" "-output-o" platform="ldc"`);
 				dub_sdl.writeln(`	postBuildCommands "avr-gcc -mmcu=` ~ info.name
 						~ ` -Wall -Wl,\"$${LFLAGS// /,}\" $$DUB_TARGET_PATH/obj/*.o -o \"$$DUB_TARGET_NAME.elf\"" `
-						~ `"avr-objcopy -O ihex -R .eeprom \"$$DUB_TARGET_NAME.elf\" \"$$DUB_TARGET_NAME.hex\""`);
+						~ `"avr-objcopy -O ihex -R .eeprom -R .fuse \"$$DUB_TARGET_NAME.elf\" \"$$DUB_TARGET_NAME.hex\""`);
 			}
 			else if (mod == "-asm")
 			{
@@ -652,7 +652,7 @@ void main(string[] args)
 						~ `"llc .dub/$$DUB_TARGET_NAME.opt.ll --march=avr --mcpu=` ~ info.name
 						~ ` -filetype=obj -O2 -o .dub/$$DUB_TARGET_NAME.o" "avr-gcc -mmcu=` ~ info.name
 						~ ` -Wall -Wl,\"$${LFLAGS// /,}\" .dub/$$DUB_TARGET_NAME.o -o \"$$DUB_TARGET_NAME.elf\"" `
-						~ `"avr-objcopy -O ihex -R .eeprom \"$$DUB_TARGET_NAME.elf\" \"$$DUB_TARGET_NAME.hex\""`);
+						~ `"avr-objcopy -O ihex -R .eeprom -R .fuse \"$$DUB_TARGET_NAME.elf\" \"$$DUB_TARGET_NAME.hex\""`);
 			}
 			dub_sdl.writeln(`}`);
 		}
